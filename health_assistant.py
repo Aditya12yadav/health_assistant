@@ -3,7 +3,7 @@ import speech_recognition as sr
 import random
 from webbrowser import open
 
-
+#Function to take command from speaker
 def take_commands():
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -22,10 +22,10 @@ def take_commands():
     time.sleep(2)
     return Query
 
-
+#voice_id for female voice assistant. Without voice id the default voice will be of a male.
 voice_id = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_ZIRA_11.0"
 
-
+#Function to speak
 def Speak(audio):
     engine = pyttsx3.init()
     engine.setProperty("voice", voice_id)
@@ -33,19 +33,19 @@ def Speak(audio):
     engine.say(audio)
     engine.runAndWait()
 
-
+#function to locate hospitals using google map
 def hospital():
     open("https://www.google.com/maps/search/Hospitals")
     Speak("The red markers show the Hospitals near you.......")
     exit()
 
-
+#function to locate pharmacies using google map
 def pharmacy():
     open("https://www.google.com/maps/search/Pharmacies")
     Speak("The red markers show the Pharmacies near you.......")
     exit()
 
-
+#Function for medications
 def medication():
     Speak("Please tell me your problem....")
     while True:
@@ -141,7 +141,7 @@ def medication():
             medication()
         Speak("How else can I help you??")
 
-
+#Main Function
 Speak("Hello user, How can I help you?")
 command = take_commands()
 if "who created you" in command or "Who created you" in command or "who made you" in command:
